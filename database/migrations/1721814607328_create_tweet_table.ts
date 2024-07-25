@@ -15,8 +15,6 @@ export default class extends BaseSchema {
       table.integer('Likes', 20).notNullable()
       table.enum('Verified', ['true', 'false']).notNullable()
       table.integer('User').unsigned().references('User.id').notNullable()
-      
-
 
       table.timestamp('created_at')
       table.timestamp('updated_at')

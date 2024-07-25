@@ -9,12 +9,9 @@ export default class extends BaseSchema {
       table.string('User_name', 50).notNullable()
       table.date('BirthDate').notNullable()
       table.integer('Account').unsigned().references('Account.id')
-      
-      
 
       table.timestamp('created_at').notNullable()
       table.timestamp('updated_at').nullable()
-      
     })
   }
 
