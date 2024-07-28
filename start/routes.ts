@@ -8,7 +8,7 @@
 */
 
 import router from '@adonisjs/core/services/router'
-import { HttpContext } from "@adonisjs/core/http";
+const AuthController = () => import('../app/controllers/auth_controller.js')
 
 const tweets = [
   {
@@ -22,7 +22,7 @@ const tweets = [
     retweets: 144,
     likes: 184,
     shares: 0,
-    verified: true
+    verified: true,
   },
   {
     id: 2,
@@ -36,7 +36,7 @@ const tweets = [
     retweets: 48,
     likes: 484,
     shares: 0,
-    verified: true
+    verified: true,
   },
   {
     id: 3,
@@ -44,13 +44,12 @@ const tweets = [
     date: 'Oct 29',
     username: '@twitter',
     tweetAvatar: 'images/tweeter-avatar.png',
-    text: 'BIG NEWS lol jk still Twitter' ,
-    comments: "6.8K",
-    retweets: "36.6K",
-    likes: "267.1K",
+    text: 'BIG NEWS lol jk still Twitter',
+    comments: '6.8K',
+    retweets: '36.6K',
+    likes: '267.1K',
     shares: 0,
-    verified: true
-
+    verified: true,
   },
   {
     id: 4,
@@ -58,13 +57,12 @@ const tweets = [
     date: 'Oct 04',
     username: '@twitter',
     tweetAvatar: 'images/tweeter-avatar.png',
-    text: 'hello literally everyone' ,
-    comments: "116.7K",
-    retweets: "785.5K",
-    likes: "3.3M",
+    text: 'hello literally everyone',
+    comments: '116.7K',
+    retweets: '785.5K',
+    likes: '3.3M',
     shares: 0,
-    verified: true
-
+    verified: true,
   },
   {
     id: 5,
@@ -78,25 +76,24 @@ const tweets = [
     retweets: 48,
     likes: 484,
     shares: 0,
-    verified: true
-
+    verified: true,
   },
-];
+]
 
+// router.get('/', [RouteController, 'BringToHomePage'])
+// router.get('/', [RouteController, 'BringToHomePage'])
+router.get('/', [AuthController, 'BringToHomePage'])
+router.get('/welcome', [AuthController, 'OnTheFirstPage']).as('welcome')
+router.get('/login', [AuthController, 'BringToLoginPage']).as('login')
+router.get('/signup', [AuthController, 'SignUp']).as('signup')
+// router
+//   .get('/home', async ({ view }) => {
+//     return view.render('pages/home', { tweets })
+//   })
+//   .as('home')
 
-router.get('/', async (ctx: HttpContext) => {
-  return ctx.response.redirect().toRoute('home')
-})
-
-
-router.get('/home', async ({ view }) => {
-
-  return view.render('pages/home', { tweets })
-}).as('home')
-
-
-router.get('/login', async ({ view }) => {
-  return view.render('pages/login')
-}).as('login')
-
-
+// router
+//   .get('/login', async ({ view }) => {
+//     return view.render('pages/login')
+//   })
+//   .as('login')

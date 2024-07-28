@@ -1,0 +1,13 @@
+@let(title = 'It\'s happenning now')
+@include('pages/partials/head')
+<div class="flex justify-between">
+  <div><img src="/public/images/Twitter_new_X_logo.png" alt="x-icon" class="mt-10"></div>
+  <div>
+    <p class="text-6xl font-black font-sans mt-10 mr-10">It's happenning now</p>
+    <div>
+      <p class="font-bold text-2xl font-sans">Sign up.</p>
+      @!component('components/input', {})
+    </div>
+  </div>
+</div>
+@include('pages/partials/foot')
