@@ -85,6 +85,7 @@ router.get('/', [AuthController, 'BringToHomePage'])
 router.get('/welcome', [AuthController, 'OnTheFirstPage']).as('welcome')
 router.get('/login', [AuthController, 'BringToLoginPage']).as('login')
 router.get('/signup', [AuthController, 'SignUp']).as('signup')
+// router.post('/signup', [AuthController, 'registerAccountInfo'])
 
 // router
 //   .get('/home', async ({ view }) => {

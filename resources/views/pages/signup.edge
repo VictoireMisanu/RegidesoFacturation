@@ -1,13 +1,13 @@
 @let(title = 'Sign Up')
 @include('pages/partials/head')
 <form class="border-10" method="POST">
-  {(csrfField())}
+  {{--  {(csrfField())}  --}}
   <div class="flex flex-col items-center justify-center">
     <p class="font-bold text-2xl mt-10 font-sans">Create Your account</p>
     <div class="flex flex-col items-center justify-between">
       <input type="text" id="idname" name="name" placeholder="Name and FirstName" class="border-2 border-blue-500 mt-5">
       <input type="text" id="idemail" name="email" placeholder="Email address" class="border-2 border-blue-500 mt-5">
-      <input type="text" id="idpw" name="password" placeholder="Password" class="border-2 border-blue-500 mt-5">
+      <input type="text" id="idpw" name="password" placeholder="Password" class="border-2 border-blue-500 mt-5 text-black">
       {{--  @!component('components/input', {type : 'text', id : 'idname', name: 'name', placeholder: 'Name and Firstname', class: 'border-2 border-blue-500'})
       @!component('components/input', {type : 'text', id : 'idemail', name: 'email', placeholder: 'Email address'})
       @!component('components/input', {type : 'text', id : 'idpw', name: 'password', placeholder: 'Password'})  --}}

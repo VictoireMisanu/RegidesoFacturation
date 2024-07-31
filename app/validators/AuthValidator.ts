@@ -12,7 +12,7 @@ export const createAccountValidator = vine.compile(
     })
   )
 
-  export const createUserInValidator = vine.compile(
+  export const createUserValidator = vine.compile(
     vine.object({
       User_name: vine.string().trim(),
       BirthDate: vine.date(),

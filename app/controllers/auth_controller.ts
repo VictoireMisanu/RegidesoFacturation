@@ -1,6 +1,7 @@
 import type { HttpContext } from '@adonisjs/core/http'
-import { createSignUpValidator } from '../validators/AuthValidator.js'
+import { createAccountValidator, createUserValidator } from '../validators/AuthValidator.js'
 import User from '../models/user.js'
+import Account from '../models/account.js'
 
 export default class AuthController {
   BringToHomePage(ctx: HttpContext) {
@@ -18,10 +19,20 @@ SignUp({view}: HttpContext){
 }
 
 async saveAccountInfo({request, response}:HttpContext){
-  const {User_name, Email, PassWord} = await request.validateUsing(createSignUpValidator)
+  const {TypeAccount, Email, PassWord} = await request.validateUsing(createAccountValidator)
   
-  await User.create({User_name, Email, PassWord})
+  await Account.create({TypeAccount, Email, PassWord})
   return response.redirect().toRoute('login')
 }
+async saveUserInfo({request, response}:HttpContext){
+  const {User_name, BirthDate, Account} = await request.validateUsing(createUserValidator)
+  
+  await User.create({User_name, BirthDate, Account})
+  return response.redirect().toRoute('login')
+}
+
+// async registerAccountInfo({request, response, auth}:HttpContext){
+//   return 
+// }
 }
 
