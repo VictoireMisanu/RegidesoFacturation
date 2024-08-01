@@ -1,18 +1,24 @@
 @let(title = 'Sign Up')
 @include('pages/partials/head')
-<form class="border-10">
+<form class="border-10" method="POST" action="/signup">
+  {{ csrfField() }}
   <div class="flex flex-col items-center justify-center">
-    <p class="font-bold text-2xl mt-10 font-sans">Create Your account</p>
-    <div class="flex flex-col items-center justify-center">
-      @!component('components/input', {type : 'text', id : 'idname', name: 'name', placeholder: 'Name and Firstname'})
-      @!component('components/input', {type : 'text', id : 'idname', name: 'name', placeholder: 'Phone Number'})
+    <p class="font-bold text-2xl mt-10 mb-10 font-sans">Create Your account</p>
+    <div class="flex flex-col  gap-2">
+      {{--  <input type="text" id="idname" name="name" placeholder="Name and FirstName" class="border-2 border-blue-500 mt-5">
+      <input type="text" id="idemail" name="email" placeholder="Email address" class="border-2 border-blue-500 mt-5">
+      <input type="text" id="idpw" name="password" placeholder="Password" class="border-2 border-blue-500 mt-5 text-black">  --}}
+
+      @!component('components/input', {type : 'text', id : 'idname', name: 'name', placeholder: 'Name and Firstname', cls: 'border-2 border-blue-500'})
+      @!component('components/input', {type : 'text', id : 'idemail', name: 'email', placeholder: 'Email address', cls:'text-black'})
+      @!component('components/input', {type : 'text', id : 'idpw', name: 'password', placeholder: 'Password', cls:'text-black'})
     </div>
     
-    <a href="signup" class="text-sky-500">Use an email address</a>
-    <p>Birth Date</p>
+    {{--  <a href="signup" class="text-sky-500">Use an email address</a>  --}}
+    <p class="mt-5 mb-5">Birth Date</p>
 <div class="flex justify-between flex-row">
 
-  <select name="year" id="month" class="bg-black border-2 border-blue-500">
+  <select name="month" id="month" class="bg-black border-2 border-blue-500 mr-5">
     <option value="0">Month</option>
     <option value="January">January</option>
     <option value="February">February</option>
@@ -26,7 +32,7 @@
     <option value="November">November</option>
     <option value="December">December</option>
   </select>
-  <select name="year" id="day" class="bg-black border-2 border-blue-500">
+  <select name="day" id="day" class="bg-black border-2 border-blue-500 mr-5">
     <option value="0">Day</option>
     <option value="01">01</option>
     <option value="02">02</option>
@@ -52,7 +58,7 @@
     <option value="22">22</option>
     <option value="23">23</option>
   </select>
-  <select name="year" id="year" class="bg-black border-2 border-blue-500">
+  <select name="year" id="year" class="bg-black border-2 border-blue-500 mr-5">
     <option value="0">Month</option>
     <option value="2024">2024</option>
     <option value="2023">2023</option>
@@ -77,6 +83,11 @@
     <option value="1955">1955</option>
     <option value="1950">1950</option>
     <option value="1945">1945</option>
+  </select>
+  <select name="TAccount" id="TAccount" class="bg-black border-2 border-blue-500 mr-5">
+    <option value="0">Type</option>
+    <option value="Personnel">Personnel</option>
+    <option value="Professionnel">Professionnel</option>
   </select>
 </div>
     <input type="submit" value="Next" class=" rounded-xl bg-black text-base pr-5 pl-5 mt-6 text-sky-500 border">

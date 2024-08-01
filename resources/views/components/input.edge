@@ -1,1 +1,7 @@
-<input type="{{type || 'text'}}" id="{{id}}" name="{{name}}" placeholder="{{placeholder}}">
+<input type="{{type || 'text'}}" id="{{id}}" name="{{name}}" placeholder="{{placeholder}}" class="{{cls}}">
+
+@inputError(name)
+  @each(message in $messages)
+    <p class="text-red-300">{{ message }}</p>
+  @end
+@end
