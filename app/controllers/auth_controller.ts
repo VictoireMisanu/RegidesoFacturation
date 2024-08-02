@@ -1,5 +1,6 @@
 import type { HttpContext } from '@adonisjs/core/http'
-import { createAccountValidator, createUserValidator } from '../validators/auth.js'
+import { createAccountValidator } from '../validators/auth.js'
+import User from '#models/user'
 // import User from '../models/user.js'
 // import Account from '../models/account.js'
 
@@ -19,7 +20,8 @@ export default class AuthController {
   }
 
   async registerAccountInfo({ request }: HttpContext) {
-    const { email, password, name } = await request.validateUsing(createAccountValidator)
-    //await User.
+    const { name, email, password } = await request.validateUsing(createAccountValidator)
+
+    await User.create({ name, email, password })
   }
 }
