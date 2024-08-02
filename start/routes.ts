@@ -80,10 +80,11 @@ const AuthController = () => import('../app/controllers/auth_controller.js')
 //   },
 // ]
 
-router.get('/', [AuthController, 'BringToHomePage'])
-router.get('/welcome', [AuthController, 'OnTheFirstPage']).as('welcome')
+router.get('/', [AuthController, 'BringToTheFirstPage'])
+router.get('/welcome', [AuthController, 'BringToTheFirstPage']).as('welcome')
 router.get('/login', [AuthController, 'BringToLoginPage']).as('login')
 router.get('/signup', [AuthController, 'SignUp']).as('signup')
+router.post('/login', [AuthController, 'BringToTheFirstPage'])
 router.post('/signup', [AuthController, 'registerAccountInfo'])
 
 // router

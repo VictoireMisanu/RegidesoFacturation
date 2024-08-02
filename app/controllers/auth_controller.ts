@@ -5,22 +5,27 @@ import User from '#models/user'
 // import Account from '../models/account.js'
 
 export default class AuthController {
-  BringToHomePage(ctx: HttpContext) {
-    // return ctx.response.redirect().toRoute('home')
-    return ctx.response.redirect().toRoute('welcome')
-  }
-  OnTheFirstPage({ view }: HttpContext) {
+  // BringToHomePage(ctx: HttpContext) {
+  //   // return ctx.response.redirect().toRoute('home')
+  //   return ctx.response.redirect().toRoute('welcome')
+  // }
+  BringToTheFirstPage({ view }: HttpContext) {
     return view.render('pages/welcome')
   }
-  BringToLoginPage({ view }: HttpContext) {
+  async BringToLoginPage({ view, request }: HttpContext) {
+    const { name, email, password } = await request.validateUsing(createAccountValidator)
+    await User.create({ name, email, password })
     return view.render('pages/login')
   }
   SignUp({ view }: HttpContext) {
+   
+    
     return view.render('pages/signup')
   }
 
   async registerAccountInfo({ request }: HttpContext) {
     const { name, email, password } = await request.validateUsing(createAccountValidator)
+  
 
     await User.create({ name, email, password })
   }

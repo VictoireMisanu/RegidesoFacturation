@@ -1,15 +1,21 @@
 @let(title = 'Log In')
 @include('pages/partials/head')
-<div class="border-10">
-  <p class="font-bold text-2xl mt-10 font-sans">Sign In To X</p>
+<form class="border-10" method="POST" action="/welcome">
+  {{ csrfField() }}
   <div class="flex flex-col items-center justify-center">
-    <div class="bg-slate-100 text-black rounded-xl text-base pr-5 pl-5 mt-6"><a href="signup">Sign up With Google</a></div>
-    <div class="bg-slate-100 text-black rounded-xl text-base pr-5 pl-5 mt-6"><a href="signup">Sign up With Apple</a></div>
-    <p class="flex justify-center">or</p>
-    <div class="bg-sky-600 bg-sky-500/100 rounded-xl text-base pr-5 pl-5 mt-6"><a href="signup">Create account</a></div>
-    <p>Already have an account?</p>
-    <div class="rounded-xl bg-black text-base pr-5 pl-5 mt-6 text-sky-500 border"><a href="login">Sign In</a></div>
+    <p class="font-bold text-2xl mt-10 mb-10 font-sans">Log In Into Your Account</p>
+    <div class="flex flex-col  gap-2">
+
+      @!component('components/input', {type : 'text', id : 'idemail', name: 'email', placeholder: 'Email address', cls:'text-black w-15 border rounded-xl'})
+      @!component('components/input', {type : 'text', id : 'idpw', name: 'password', placeholder: 'Password', cls:'text-black w-15 border rounded-xl'})
+    </div>
+    
+
+<div class="flex justify-between flex-row">
+
+</div>
+    <input type="submit" value="Log In" class=" rounded-xl bg-black text-black pr-5 pl-5 mt-6 bg-sky-500 border">
   </div>
 </div>
-</div>
+</form>
   @include('pages/partials/foot')
