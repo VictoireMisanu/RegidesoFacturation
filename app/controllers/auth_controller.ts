@@ -12,21 +12,20 @@ export default class AuthController {
   BringToTheFirstPage({ view }: HttpContext) {
     return view.render('pages/welcome')
   }
-  async BringToLoginPage({ view, request }: HttpContext) {
-    const { name, email, password } = await request.validateUsing(createAccountValidator)
-    await User.create({ name, email, password })
+  async BringToLoginPage({ view }: HttpContext) {
+    // const { name, email, password } = await request.validateUsing(createAccountValidator)
+    // await User.create({ name, email, password })
     return view.render('pages/login')
   }
   SignUp({ view }: HttpContext) {
-   
-    
     return view.render('pages/signup')
   }
 
-  async registerAccountInfo({ request }: HttpContext) {
+  async registerAccountInfo({ request, response }: HttpContext) {
+    // const { name, email, password } = await request.validateUsing(createAccountValidator)
     const { name, email, password } = await request.validateUsing(createAccountValidator)
-  
 
     await User.create({ name, email, password })
+    return response.redirect('/login')
   }
 }
