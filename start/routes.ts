@@ -84,9 +84,9 @@ router.get('/', [AuthController, 'BringToTheFirstPage'])
 router.get('/welcome', [AuthController, 'BringToTheFirstPage']).as('welcome')
 router.get('/login', [AuthController, 'BringToLoginPage']).as('login')
 router.get('/signup', [AuthController, 'SignUp']).as('signup')
-router.post('/login', [AuthController, 'BringToTheFirstPage'])
+router.post('/login', [AuthController, 'authenticateUser'])
 router.post('/signup', [AuthController, 'registerAccountInfo'])
-
+router.get('/tweet', [AuthController, 'ShowTweet'])
 // router
 //   .get('/home', async ({ view }) => {
 //     return view.render('pages/home', { tweets })
