@@ -1,0 +1,10 @@
+@if(flashMessages.has('success'))
+  <div class="notification bg-green-700 fixed top-0 right-0">
+    {{old('success')}}
+  </div>
+@endif
+
+
+@error('E_INVALID_CREDENTIALS')
+  <p>Email incorrect</p>
+@end

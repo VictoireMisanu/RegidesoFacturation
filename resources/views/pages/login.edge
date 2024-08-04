@@ -1,5 +1,6 @@
 @let(title = 'Log In')
 @include('pages/partials/head')
+@include('pages/partials/flash')
 <form class="border-10" method="POST" action="/login">
   {{ csrfField() }}
   <div class="flex flex-col items-center justify-center">
