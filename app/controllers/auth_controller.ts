@@ -73,10 +73,6 @@ const tweets = [
   },
 ]
 export default class AuthController {
-  // BringToHomePage(ctx: HttpContext) {
-  //   // return ctx.response.redirect().toRoute('home')
-  //   return ctx.response.redirect().toRoute('welcome')
-  // }
   BringToTheFirstPage({ view, auth }: HttpContext) {
     const user = auth.user
     return view.render('pages/welcome')
@@ -84,55 +80,55 @@ export default class AuthController {
   async BringToLoginPage({ view }: HttpContext) {
     return view.render('pages/login')
   }
-  SignUp({ view }: HttpContext) {
-    return view.render('pages/signup')
-  }
-  ShowTweet({ view, auth }: HttpContext) {
-    const user = auth.user
-    return view.render('pages/home', { tweets, user })
-  }
+  // SignUp({ view }: HttpContext) {
+  //   return view.render('pages/signup')
+  // }
+  // ShowTweet({ view, auth }: HttpContext) {
+  //   const user = auth.user
+  //   return view.render('pages/home', { tweets, user })
+  // }
 
-  async registerAccountInfo({ request, response, session }: HttpContext) {
-    const { name, email, password } = await request.validateUsing(createAccountValidator)
+  // async registerAccountInfo({ request, response, session }: HttpContext) {
+  //   const { name, email, password } = await request.validateUsing(createAccountValidator)
 
-    await User.create({ name, email, password })
-    session.flash('success', 'connexion reussie')
-    return response.redirect('/login')
-  }
+  //   await User.create({ name, email, password })
+  //   session.flash('success', 'connexion reussie')
+  //   return response.redirect('/login')
+  // }
 
-  async authenticateUser({ request, response, session, auth }: HttpContext) {
-    // const { email, password } = request.only(['email', 'password'])
-    /**
-     * Find a user by email. Return error if a user does
-     * not exists
-     */
-    // let user = await User.findBy('email', email)
-    // if (!user) {
-    //   response.flash('Invalid credentials')
-    // }
-    try {
-      const { email, password } = request.only(['email', 'password'])
-      let user = await User.findBy('email', email)
+  // async authenticateUser({ request, response, session, auth }: HttpContext) {
+  //   // const { email, password } = request.only(['email', 'password'])
+  //   /**
+  //    * Find a user by email. Return error if a user does
+  //    * not exists
+  //    */
+  //   // let user = await User.findBy('email', email)
+  //   // if (!user) {
+  //   //   response.flash('Invalid credentials')
+  //   // }
+  //   try {
+  //     const { email, password } = request.only(['email', 'password'])
+  //     let user = await User.findBy('email', email)
 
-      await hash.verify(password, password)
-      user = await User.verifyCredentials(email, password)
-      await auth.use('web').login(user)
-      console.log('is authenticated')
-      session.flash('success', 'connexion reussie')
+  //     await hash.verify(password, password)
+  //     user = await User.verifyCredentials(email, password)
+  //     await auth.use('web').login(user)
+  //     console.log('is authenticated')
+  //     session.flash('success', 'connexion reussie')
 
-      return response.redirect('/home')
-    } catch (error) {
-      console.error(error)
-      session.flash('error', "L'email ou le mot de passe est incorrect")
-      return response.redirect().back()
-    }
+  //     return response.redirect('/home')
+  //   } catch (error) {
+  //     console.error(error)
+  //     session.flash('error', "L'email ou le mot de passe est incorrect")
+  //     return response.redirect().back()
+  //   }
 
-    /**
-     * Verify the password using the hash service
-     */
-    // await hash.verify(password, password)
-    // user = await User.verifyCredentials(email, password)
-    // console.log('is authenticated')
-    // return response.redirect('/home')
-  }
+  //   /**
+  //    * Verify the password using the hash service
+  //    */
+  //   // await hash.verify(password, password)
+  //   // user = await User.verifyCredentials(email, password)
+  //   // console.log('is authenticated')
+  //   // return response.redirect('/home')
+  // }
 }
