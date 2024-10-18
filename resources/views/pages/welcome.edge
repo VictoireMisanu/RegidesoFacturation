@@ -1,18 +1,21 @@
-@let(title = 'X. This is what is happenning')
+@let(title = 'Regideso- Sign up')
 @include('pages/partials/head')
-<div class="flex justify-between">
-  <div><img src="/public/images/Twitter_new_X_logo.png" alt="x-icon" class="mt-10"></div>
-  <div>
-    <p class="text-6xl font-black font-sans mt-10 mr-10">It's happenning now</p>
-    <p class="font-bold text-2xl mt-10 font-sans">Join today</p>
-    <div class="flex flex-col items-center justify-center">
-      <div class="bg-slate-100 text-black rounded-xl text-base pr-5 pl-5 mt-6"><a href="signup">Sign up With Google</a></div>
-      <div class="bg-slate-100 text-black rounded-xl text-base pr-5 pl-5 mt-6"><a href="signup">Sign up With Apple</a></div>
-      <p class="flex justify-center">or</p>
-      <div class="bg-sky-600 bg-sky-500/100 rounded-xl text-base pr-5 pl-5 mt-6"><a href="signup">Create account</a></div>
-      <p>Already have an account?</p>
-      <div class=" rounded-xl bg-black text-base pr-5 pl-5 mt-6 text-sky-500 border"><a href="login">Sign In</a></div>
+<div class="w-full h-full flex items-center justify-center py-16">
+  <div class=" w-full h-[35rem] py-10 flex flex-col justify-between items-center mx-10 border-[2px] shadow-lg shadow-indigo-500/50 rounded-xl">
+    <div id="title" class="flex flex-col items-center gap-10 ">
+      <img src="/public/svg/logoregideso.svg" alt="x-icon" class="mt-10 w-32">
+      <p class="text-xl font-sans font-bold text-basicBlue flex flex-nowrap justify-center">Créer votre compte Regideso</p>
     </div>
+    
+    <div id="input" class="flex flex-col  gap-5">
+      @!component('components/input', {type : 'text', id : 'idemail', name: 'email', placeholder: 'Email address', cls:'text-black text-[1.2rem] font-sans w-15 h-10 border-b-2 border-b-black outline-none'})
+      @!component('components/input', {type : 'text', id : 'idpw', name: 'password', placeholder: 'Password', cls:'text-black text-[1.2rem] font-sans w-15 h-10 border-b-2 border-b-black outline-none'})
+    </div>
+  
+    <div id="button">
+      <input type="button" value="Obtenir le code de vérification" class="w-15 h-10 px-5 text-basicBlue font-semibold border-2 border-basicBlue rounded-md hover:cursor-pointer hover:text-slate-50 hover:bg-basicBlue">
+    </div>
+    
   </div>
 </div>
 @include('pages/partials/foot')
