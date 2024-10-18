@@ -11,11 +11,12 @@
     
     <div id="input" class="flex flex-col  gap-5">
       @!component('components/input', {type : 'text', id : 'idemail', name: 'email', placeholder: 'Email address', cls:'text-black text-[1.2rem] font-sans w-15 h-10 border-b-2 border-b-black outline-none'})
-      @!component('components/input', {type : 'text', id : 'idpw', name: 'password', placeholder: 'Password', cls:'text-black text-[1.2rem] font-sans w-15 h-10 border-b-2 border-b-black outline-none'})
+      @!component('components/input', {type : 'text', id : 'code', name: 'codegenerated', placeholder: 'Code', cls:'text-black text-[1.2rem] font-sans w-15 h-10 border-b-2 border-b-black outline-none'})
     </div>
   
-    <div id="button">
-      <input type="button" value="Se connecter" class="w-15 h-10 px-5 text-basicBlue font-semibold border-2 border-basicBlue rounded-md hover:cursor-pointer hover:text-slate-50 hover:bg-basicBlue">
+    <div id="button" class="flex gap-3">
+      <input type="button" value="Obtenir le Code" class="text-sm w-15 h-10 px-5 text-basicBlue font-semibold border-2 border-basicBlue rounded-md hover:cursor-pointer hover:text-slate-50 hover:bg-sky-700 hover:border-none hover:shadow-lg hover:shadow-gray-900">
+      <input type="button" value="Se connecter" class="w-15 h-10 px-5 text-emerald-600 font-semibold border-2 border-emerald-600 rounded-md hover:cursor-pointer hover:text-slate-50 hover:bg-emerald-600 hover:shadow-lg hover:shadow-gray-900">
     </div>
     
   </form>
