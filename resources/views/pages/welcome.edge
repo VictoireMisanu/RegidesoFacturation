@@ -1,19 +1,21 @@
-@let(title = 'Sign up')
+@let(title = 'Sign Up')
 @include('pages/partials/head')
 <div class="w-full h-full flex items-center justify-center py-16">
   <form method="POST" action="/" class="w-full h-[35rem] py-10 flex flex-col justify-between items-center mx-10 border-[2px] shadow-lg shadow-indigo-500/50 rounded-xl">
+    {{ csrfField() }}
     <div id="title" class="flex flex-col items-center gap-10 ">
       <img src="/public/svg/logoregideso.svg" alt="x-icon" class="mt-10 w-32">
-      <p class="text-xl font-sans font-bold text-basicBlue flex flex-nowrap justify-center">Connectez-vous</p>
+      <p class="text-xl font-sans font-bold text-basicBlue flex flex-nowrap justify-center">Création du compte</p>
     </div>
     
     <div id="input" class="flex flex-col  gap-5">
-      @!component('components/input', {type : 'text', id : 'idname', name: 'name', placeholder: 'Votre nom', cls:'text-black text-[1.2rem] font-sans w-15 h-10 border-b-2 border-b-black outline-none'})
-      @!component('components/input', {type : 'text', id : 'idpw', name: 'password', placeholder: 'Code', cls:'text-black text-[1.2rem] font-sans w-15 h-10 border-b-2 border-b-black outline-none'})
+      @!component('components/input', {type : 'text', id : 'idname', name: 'nom', placeholder: 'Votre nom', cls:'text-black text-[1.2rem] font-sans w-15 h-10 border-b-2 border-b-black outline-none'})
+      @!component('components/input', {type : 'email', id : 'email', name: 'email', placeholder: 'Email Address', cls:'text-black text-[1.2rem] font-sans w-15 h-10 border-b-2 border-b-black outline-none'})
+      @!component('components/input', {type : 'password', id : 'idpw', name: 'code', placeholder: 'Code', cls:'text-black text-[1.2rem] font-sans w-15 h-10 border-b-2 border-b-black outline-none'})
     </div>
   
     <div id="button">
-      <input type="button" value="Passer" class="w-15 h-10 px-5 text-basicBlue font-semibold border-2 border-basicBlue rounded-md hover:cursor-pointer hover:text-slate-50 hover:bg-basicBlue hover:border-none hover:shadow-lg hover:shadow-gray-900">
+      <input type="submit" value="Créer" class="w-15 h-10 px-5 text-basicBlue font-semibold border-2 border-basicBlue rounded-md hover:cursor-pointer hover:text-slate-50 hover:bg-basicBlue hover:border-none hover:shadow-lg hover:shadow-gray-900">
     </div>
     
   </form>

@@ -88,13 +88,13 @@ export default class AuthController {
   //   return view.render('pages/home', { tweets, user })
   // }
 
-  // async registerAccountInfo({ request, response, session }: HttpContext) {
-  //   const { name, email, password } = await request.validateUsing(createAccountValidator)
+  async registerAccountInfo({ request, response, session }: HttpContext) {
+    const { nom, email, code } = await request.validateUsing(createAccountValidator)
 
-  //   await User.create({ name, email, password })
-  //   session.flash('success', 'connexion reussie')
-  //   return response.redirect('/login')
-  // }
+    await User.create({ nom, email, code })
+    session.flash('success', 'compte crée avec succès')
+    return response.redirect('/login')
+  }
 
   async authenticateUser({ request, response, session, auth }: HttpContext) {
     // const { email, password } = request.only(['email', 'password'])
@@ -107,13 +107,13 @@ export default class AuthController {
     //   response.flash('Invalid credentials')
     // }
     try {
-      const { name, code } = request.only(['name', 'code'])
-      let user = await User.findBy('code', code)
+      const { email, code } = request.only(['email', 'code'])
+      let client = await User.findBy('email', email)
 
       await hash.verify(code, code)
-      user = await User.verifyCredentials(name, code)
-      await auth.use('web').login(user)
-      console.log('is authenticated')
+      client = await User.verifyCredentials(email, code)
+      await auth.use('web').login(client)
+      console.log('encore un pas')
       session.flash('success', 'Bravo! Vous y êtes presque')
 
       return response.redirect('/')
