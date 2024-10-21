@@ -108,15 +108,17 @@ export default class AuthController {
     // }
     try {
       const { email, code } = request.only(['email', 'code'])
-      let client = await User.findBy('email', email)
+      const client = await User.findBy('email', email)
 
-      await hash.verify(code, code)
-      client = await User.verifyCredentials(email, code)
-      await auth.use('web').login(client)
-      console.log('encore un pas')
-      session.flash('success', 'Bravo! Vous y êtes presque')
-
-      return response.redirect('/')
+      if (!client) {
+        response.abort('Invalid credentials')
+      } else {
+        await hash.verify(code, code)
+        await auth.use('web').login(client)
+        session.flash('success', 'Connexion reussie')
+        return response.redirect('/home')
+      }
+      // const client = await User.verifyCredentials(email, code)
     } catch (error) {
       console.error(error)
       session.flash('error', "Le nom ou le code d'accès est incorrect")

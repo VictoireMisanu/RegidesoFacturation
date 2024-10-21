@@ -1,16 +1,7 @@
-@layouts.app('title', 'Tweet')
- <div class="timeline ">
-   @component('components/header')
-   @endcomponent
-   @component('components/tweetEditor')
-   @endcomponent
+@let(title = 'Log In')
+@include('pages/partials/head')
+<div class="w-full h-full flex items-center justify-center py-16">
+<h1>Welcome</h1>  
 
-   @each(tweet in tweets)
-      @component('components/tweet', {...tweet})
-      @endcomponent
-   @end
-
-
- </div>
-@end
-
+</div>
+@include('pages/partials/foot')
